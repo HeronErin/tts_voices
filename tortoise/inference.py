@@ -173,7 +173,7 @@ def save_gen_with_voicefix(g, fpath, squeeze=True, voicefixer=True):
         vfixer.restore(
             input=fpath,
             output=fpath,
-            cuda=True,
+            cuda=False,
             mode=0,
             # your_vocoder_func = convert_mel_to_wav # TODO test if integration with unvinet improves things
         )

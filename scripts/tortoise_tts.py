@@ -17,7 +17,7 @@ from tortoise.utils.audio import load_audio
 from tortoise.utils.diffusion import SAMPLERS
 from tortoise.models.vocoder import VocConf
 
-
+print(MODELS_DIR)
 @dataclass
 class General:
     """General options"""

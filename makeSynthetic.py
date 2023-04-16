@@ -12,11 +12,9 @@ print("Imported right")
 
 
 voice_samples, conditioning_latents = load_voice("darknet_monotone")
-gen = tts.tts_with_preset("this is some test text!", voice_samples=voice_samples, conditioning_latents=conditioning_latents,
-                          preset=preset)
-torchaudio.save('generated.wav', gen.squeeze(0).cpu(), 24000)
 
-# import os, random
+
+import os, random
 # from concurrent.futures import ThreadPoolExecutor
 #
 # def strip_non_ascii(string):
@@ -24,20 +22,18 @@ torchaudio.save('generated.wav', gen.squeeze(0).cpu(), 24000)
 #   stripped = (c for c in string if 0 < ord(c) < 127)
 #   return ''.join(stripped)
 #
-# os.mkdir("wavs")
+os.mkdir("wavs")
 #
-# i = 0
-# lines = open("input.txt", "r").read().split("\n")
-# for l in lines:
-#     f = open("/tmp/t", "w")
-#     f.write(strip_non_ascii(l))
-#     f.close()
-#
-#     !cat /tmp/t | python scripts/tortoise_tts.py --voice darknet_monotone --preset ultra_fast -O /tmp
-#     os.system(f"mv /tmp/darknet_monotone_combined.wav wavs/{i}.wav")
-#
-#     f = open("metadata.csv", "a")
-#     f.write(f"{i}||{l}\n")
-#     f.close()
-#     print(v"Finished with {i}")
-#     i+=1
+i = 0
+lines = open("input.txt", "r").read().split("\n")
+for l in lines:
+    gen = tts.tts_with_preset(l, voice_samples=voice_samples, conditioning_latents=conditioning_latents,
+                            preset="ultra_fast)
+    torchaudio.save(f'wavs/{i}.wav', gen.squeeze(0).cpu(), 24000)
+
+    f = open("metadata.csv", "a")
+    f.write(f"{i}||{l}\n")
+    f.close()
+    print(v"Finished with {i}")
+    i+=1
+

@@ -34,6 +34,6 @@ for l in lines:
     f = open("metadata.csv", "a")
     f.write(f"{i}||{l}\n")
     f.close()
-    print(v"Finished with {i}")
+    print(f"Finished with {i}")
     i+=1
 

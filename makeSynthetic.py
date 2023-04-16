@@ -12,7 +12,7 @@ print("Imported right")
 
 
 voice_samples, conditioning_latents = load_voice("darknet_monotone")
-gen = tts.tts_with_preset(text, voice_samples=voice_samples, conditioning_latents=conditioning_latents,
+gen = tts.tts_with_preset("this is some test text!", voice_samples=voice_samples, conditioning_latents=conditioning_latents,
                           preset=preset)
 torchaudio.save('generated.wav', gen.squeeze(0).cpu(), 24000)
 

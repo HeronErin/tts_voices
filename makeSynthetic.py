@@ -28,7 +28,7 @@ i = 0
 lines = open("input.txt", "r").read().split("\n")
 for l in lines:
     gen = tts.tts_with_preset(l, voice_samples=voice_samples, conditioning_latents=conditioning_latents,
-                            preset="ultra_fast)
+                            preset="ultra_fast")
     torchaudio.save(f'wavs/{i}.wav', gen.squeeze(0).cpu(), 24000)
 
     f = open("metadata.csv", "a")

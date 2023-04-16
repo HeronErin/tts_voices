@@ -9,6 +9,13 @@ from tortoise.utils.audio import load_audio, load_voice, load_voices
 # This will download all the models used by Tortoise from the HuggingFace hub.
 tts = TextToSpeech()
 print("Imported right")
+
+
+voice_samples, conditioning_latents = load_voice("darknet_monotone")
+gen = tts.tts_with_preset(text, voice_samples=voice_samples, conditioning_latents=conditioning_latents,
+                          preset=preset)
+torchaudio.save('generated.wav', gen.squeeze(0).cpu(), 24000)
+
 # import os, random
 # from concurrent.futures import ThreadPoolExecutor
 #

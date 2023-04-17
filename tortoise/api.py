@@ -214,6 +214,7 @@ class TextToSpeech:
         clvp_checkpoint=None,
         diff_checkpoint=None,
         vocoder=VocConf.Univnet,
+        use_directml=False
     ):
         """
         Constructor
@@ -241,6 +242,9 @@ class TextToSpeech:
         )
         self.enable_redaction = enable_redaction
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if use_directml:
+            import torch_directml
+            self.device = torch_directml.device()
         if self.enable_redaction:
             self.aligner = Wav2VecAlignment()
 

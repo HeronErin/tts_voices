@@ -24,7 +24,7 @@ import os, random
 #
 os.mkdir("wavs")
 #
-i = 3182
+i = 4008
 lines = open("input.txt", "r").read().split("\n")[i:]
 for l in lines:
     gen = tts.tts_with_preset(l, voice_samples=voice_samples, conditioning_latents=conditioning_latents,

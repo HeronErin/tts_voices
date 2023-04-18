@@ -11,7 +11,7 @@ tts = TextToSpeech()
 print("Imported right")
 
 
-voice_samples, conditioning_latents = load_voice("darknet_monotone")
+voice_samples, conditioning_latents = load_voice("kento")
 
 
 import os, random
@@ -24,7 +24,7 @@ import os, random
 #
 os.mkdir("wavs")
 #
-i = 4008
+i = 0
 lines = open("input.txt", "r").read().split("\n")[i:]
 for l in lines:
     gen = tts.tts_with_preset(l, voice_samples=voice_samples, conditioning_latents=conditioning_latents,
